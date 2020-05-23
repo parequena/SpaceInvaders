@@ -36,6 +36,14 @@ Visual Studio does all things for us.
 ## Some Images
 ~~*TODO*~~
 
+## TODO
+- Create AI system.
+- Create Collision system.
+- Create HP system.
+- Physics system.
+- Improve menu.
+- Improve string render (SDL_ttf).
+- Changing the GameContext_t to another approach.
 
 # Resources
 - **tinyECS inspiration:** [Profesor Retroman C++ : Programación de Videojuegos [2019/20] - Youtube List](https://www.youtube.com/playlist?list=PLmxqg54iaXrhTqZxylLPo0nov0OoyJqiS) << Very changed.
