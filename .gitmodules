@@ -3,8 +3,10 @@
 	url = https://github.com/libsdl-org/SDL
 [submodule "libs/SDL_ttf"]
 	path = libs/SDL_ttf
+	url = https://github.com/libsdl-org/SDL_ttf
 [submodule "libs/SDL_image"]
 	path = libs/SDL_image
-[submodule "libs/freetype"]
+	url = https://github.com/libsdl-org/SDL_image
+[submodule "libs/SDL_ttf/external/freetype"]
 	path = libs/SDL_ttf/external/freetype
 	url = https://github.com/freetype/freetype.git

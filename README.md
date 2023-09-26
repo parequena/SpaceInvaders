@@ -55,6 +55,7 @@ Space Invaders made with SDL3 on Windows using C++17 and ECS approach.
 Let's see an example with `gcc_release` as preset, but you can choose another from this list.
 ```
 $ git clone --recurse-submodules https://github.com/parequena/SpaceInvaders
+#               git submodule update --init # if fails
 $ mkdir build
 $ cd build
 $ cmake .. --preset gcc_release
