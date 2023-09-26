@@ -5,3 +5,6 @@
 	path = libs/SDL_ttf
 [submodule "libs/SDL_image"]
 	path = libs/SDL_image
+[submodule "libs/freetype"]
+	path = libs/SDL_ttf/external/freetype
+	url = https://github.com/freetype/freetype.git

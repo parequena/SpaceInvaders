@@ -15,6 +15,10 @@ add_subdirectory( SDL )
 # https://github.com/libsdl-org/SDL_image
 add_subdirectory( SDL_image )
 
+# freetype (Windows fails)
+# https://github.com/freetype/freetype
+add_subdirectory( freetype )
+
 # SDL_ttf
 # https://github.com/libsdl-org/SDL_ttf
 add_subdirectory( SDL_ttf )

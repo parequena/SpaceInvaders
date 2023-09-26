@@ -1,6 +1,6 @@
 # Space Invaders
 
-Space Invaders made with SDL2 on Windows using C++17 and ECS approach.
+Space Invaders made with SDL3 on Windows using C++17 and ECS approach.
 
 [Twitter](https://twitter.com/conPdePABLO)
 
@@ -10,7 +10,7 @@ Space Invaders made with SDL2 on Windows using C++17 and ECS approach.
 
 ## Features
 - This repo has been updated on 26/09/2023, integrating some Sanitizers and all warnings enabled as errors, surely this code has not been revised, **I SAW SOME LEAK SANITIZER ERRORS** can I won't solve them right now.
-- Using SDL2 just as graphic api.
+- Using SDL3 just as graphic api.
 - C++17 features:
     - Smart pointers.   
     - Lambdas.
@@ -21,12 +21,12 @@ Space Invaders made with SDL2 on Windows using C++17 and ECS approach.
 
 - **Assets:** Assets files, to display on the screen (link below).
 - **githubResource:** This is a folder with some images to this README.
-- **components:** Components used on the game.
-- **game:** Game files, as Main Menu, or Game State.
-- **Libraries:** Libs to store SDL and dependencies.
-- **systems:** Some systems.
-- **tinyECS:** Core tinyECS.
-- **main.cpp** main file.
+- **src/components:** Components used on the game.
+- **src/game:** Game files, as Main Menu, or Game State.
+- **libs:** Libs to store SDL and dependencies.
+- **src/systems:** Some systems.
+- **src/tinyECS:** Core tinyECS.
+- **src/main.cpp:** main file.
  
 ## Installation and compilation
 ### Dependencies
