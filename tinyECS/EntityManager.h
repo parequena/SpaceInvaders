@@ -14,31 +14,31 @@
 namespace tinyECS
 {
 
-	struct EntityManager_t
-	{
-		// Ctor.
-		explicit EntityManager_t() = default;
+struct EntityManager_t
+{
+   // Ctor.
+   explicit EntityManager_t() = default;
 
-		// Create the player.
-		[[nodiscard]] static std::size_t createPlayer();
+   // Create the player.
+   [[nodiscard]] static std::size_t createPlayer();
 
-		// Create wall
-		static void createWall(uint32_t x, uint32_t y, uint32_t w, uint32_t h);
+   // Create wall
+   static void createWall(std::uint32_t x, std::uint32_t y, std::uint32_t w, std::uint32_t h);
 
-		// Create an enemy.
-		[[nodiscard]] static std::size_t createEnemy(uint32_t x, uint32_t y);
+   // Create an enemy.
+   [[nodiscard]] static std::size_t createEnemy(std::uint32_t x, std::uint32_t y);
 
-		// Create player bullet.
-		static void createPlayerBullet(uint32_t x, uint32_t y);
+   // Create player bullet.
+   static void createPlayerBullet(std::uint32_t x, std::uint32_t y);
 
-		// Create enemy bullet.
-		static void createEnemyBullet(uint32_t x, uint32_t y);
+   // Create enemy bullet.
+   static void createEnemyBullet(std::uint32_t x, std::uint32_t y);
 
-		// Create obstacle
-		static void createObstacle(uint32_t x, uint32_t y);
+   // Create obstacle
+   static void createObstacle(std::uint32_t x, std::uint32_t y);
 
-	private:
-		// CreateBullet.
-		static void createBullet(uint32_t x, uint32_t y, RenderCmp_t::types type, int8_t speed, uint8_t mask);
-	};
+private:
+   // CreateBullet.
+   static void createBullet(std::uint32_t x, std::uint32_t y, RenderCmp_t::types type, int8_t speed, std::uint8_t mask);
+};
 }

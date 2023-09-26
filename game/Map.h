@@ -16,63 +16,63 @@ struct RenderSys_t;
 struct CollisionCmp_t;
 
 struct Map_t : tinyECS::State_t
-
 {
-	// Ctor.
-	explicit Map_t(RenderSys_t& renderSys, uint8_t columnsEnemies, uint8_t rowsEnemies, uint8_t numCovers);
+   // Ctor.
+   explicit Map_t(
+     RenderSys_t& renderSys, std::uint8_t columnsEnemies, std::uint8_t rowsEnemies, std::uint8_t numCovers);
+   inline constexpr Map_t(Map_t const&) = delete;
+   inline constexpr Map_t operator=(Map_t const&) = delete;
 
-	// Dtor.
-	~Map_t();
-	
-	// run the map.
-    bool run();
+   // Dtor.
+   ~Map_t();
 
-	// Get playerHP
-	[[nodiscard]] uint32_t getPlayerHP() const;
+   // run the map.
+   bool run();
+
+   // Get playerHP
+   [[nodiscard]] std::uint32_t getPlayerHP() const;
 
 private:
-    // Update system.
-	template <typename cmp_t>
-    void updateSystem() const
-	{
-		// Update all collisions.
-		auto& cmps = m_cmpStor->getComponents<cmp_t>();
-		std::for_each(cmps.begin(), cmps.end(), [](cmp_t& pCmp) { pCmp.update(); });
-	}
+   // Update system.
+   template <typename cmp_t> void updateSystem() const
+   {
+      // Update all collisions.
+      auto& cmps = m_cmpStor->getComponents<cmp_t>();
+      std::for_each(cmps.begin(), cmps.end(), [](cmp_t& pCmp) { pCmp.update(); });
+   }
 
-	// Check alive entities
-	void checkAliveEntites();
+   // Check alive entities
+   void checkAliveEntites();
 
-	// React to collisions.
-	void react2Collisions(CollisionCmp_t& lh, CollisionCmp_t& rh) const;
+   // React to collisions.
+   void react2Collisions(CollisionCmp_t& lh, CollisionCmp_t& rh) const;
 
-	// check collisions.
-	void checkCollisions() const;
+   // check collisions.
+   void checkCollisions() const;
 
-	// Check enemy position.
-	[[nodiscard]] bool checkEnemyPosition() const;
-	
-    // Update.
-    void update();
+   // Check enemy position.
+   [[nodiscard]] bool checkEnemyPosition() const;
 
-    // ----------------------------------------------------------------
-	// ComponentStor
-	tinyECS::ComponentStorage_t* m_cmpStor{ tinyECS::GameContext_t::getCmpStorage() };
+   // Update.
+   void update();
 
-	// Render system
-	RenderSys_t& m_rendSys;
+   // ----------------------------------------------------------------
+   // ComponentStor
+   tinyECS::ComponentStorage_t* m_cmpStor{ tinyECS::GameContext_t::getCmpStorage() };
 
-	// Player EID to simplify code.
-	std::size_t m_playerEid{ 0 };
-	std::size_t m_lastEnemy{ 0 };
-	
-    const uint8_t m_columnsEnemies{ 10 }; // Enemies on a column.
-    const uint8_t m_rowsEnemies{ 5 }; // Enemies on a row.
-    const uint8_t m_numPlayers{ 1 }; // Number of players.
-    const uint8_t m_numCovers{ 4 }; // Number of covers.
+   // Render system
+   RenderSys_t& m_rendSys;
 
-	// Enemies left.
-	const uint32_t m_totalEnemies{ 0 };
-	uint32_t m_enemiesKilled{ 0 };
+   // Player EID to simplify code.
+   std::size_t m_playerEid{ 0 };
+   std::size_t m_lastEnemy{ 0 };
+
+   std::uint8_t m_columnsEnemies{ 9 };  // Enemies on a column.
+   std::uint8_t m_rowsEnemies{ 5 };     // Enemies on a row.
+   std::uint8_t m_numPlayers{ 1 };      // Number of players.
+   std::uint8_t m_numCovers{ 4 };       // Number of covers.
+
+   // Enemies left.
+   std::uint32_t m_totalEnemies{ 0 };
+   std::uint32_t m_enemiesKilled{ 0 };
 };
-

@@ -13,17 +13,6 @@ AICmp_t::AICmp_t(std::size_t eid)
 	: Component_t(eid)
 { }
 
-AICmp_t& AICmp_t::operator=(const AICmp_t& rh)
-{
-	if (this == &rh) return *this;
-	Component_t::operator = (rh);
-	m_current = rh.m_current;
-	m_steps = rh.m_steps;
-	m_direction = rh.m_direction;
-	
-	return *this;
-}
-
 void AICmp_t::update()
 {
 	auto phy = tinyECS::GameContext_t::getCmpStorage()->getComponentFromID<PhysicsCmp_t>(getEntityID());

@@ -21,7 +21,7 @@
 #include <tinyECS/GameContext.h>
 #include <thread>
 
-int main(int, char**)
+int main()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
@@ -34,10 +34,6 @@ int main(int, char**)
 		std::cerr << "TTF_Init Error.\n";
 		return -1;
 	}
-
-	const auto columEnemies{ 9 }; // { 9 };
-	const auto rowEnemies{ 5 }; // { 5 };
-	const auto numCovers{ 4 };
 
 	RenderSys_t* renderSys{ new RenderSys_t }; // Render system.
 

@@ -10,22 +10,18 @@
 
 struct InputCmp_t final : tinyECS::Component_t
 {
-	// Ctor.
-	explicit InputCmp_t(std::size_t eid);
+   // Ctor.
+   explicit InputCmp_t(std::size_t eid);
 
-	// Operator=
-	InputCmp_t& operator=(const InputCmp_t& rh);
-	
-	// Update;
-	void update() override;
+   // Update;
+   void update() override;
 
-	// Left arrow.
-	const SDL_Keycode m_leftKey{ SDLK_LEFT };
+   // Left arrow.
+   SDL_Keycode m_leftKey{ SDLK_LEFT };
 
-	// Right arrow.
-	const SDL_Keycode m_rightKey{ SDLK_RIGHT };
+   // Right arrow.
+   SDL_Keycode m_rightKey{ SDLK_RIGHT };
 
-	// Space to shoot.
-	const SDL_Keycode m_shootKey{ SDLK_SPACE };
+   // Space to shoot.
+   SDL_Keycode m_shootKey{ SDLK_SPACE };
 };
-

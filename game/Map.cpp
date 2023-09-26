@@ -18,24 +18,24 @@
 #include <systems/RenderSys.h>
 
 
-Map_t::Map_t(RenderSys_t& renderSys, uint8_t columnsEnemies, uint8_t rowsEnemies, uint8_t numCovers)
-	:m_rendSys(renderSys)
+Map_t::Map_t(RenderSys_t& renderSys, std::uint8_t columnsEnemies, std::uint8_t rowsEnemies, std::uint8_t numCovers)
+	: m_rendSys(renderSys)
 	, m_columnsEnemies(columnsEnemies)
 	, m_rowsEnemies(rowsEnemies)
 	, m_numCovers(numCovers)
-	, m_totalEnemies{ static_cast<uint32_t>(columnsEnemies * rowsEnemies) }
+	, m_totalEnemies{ static_cast<std::uint32_t>(columnsEnemies * rowsEnemies) }
 {
 	// Reserve all the entities space on the map.
-	const auto totalEnities = m_columnsEnemies * m_rowsEnemies + m_numPlayers + m_numCovers + 1; // +1 'Cause map it's treated as entity.
+	std::size_t const totalEnities = std::size_t(m_columnsEnemies) * std::size_t(m_rowsEnemies) + std::size_t(m_numPlayers) + std::size_t(m_numCovers) + 1UZ; // +1 'Cause map it's treated as entity.
 	m_cmpStor->setVectSize(totalEnities*2); // Reserve for all components // *2 Due bullets.
-	const tinyECS::Entity_t e;
+	const tinyECS::Entity_t e{};
 	const auto eid = e.getEntityID();
 	m_cmpStor->addComponent(RenderCmp_t{ eid, RenderCmp_t::types::R_Background }); // Adds the map render component.
 
 	const auto w{ kWindWidht };
 	const auto h{ kWindHeight };
 	
-	m_cmpStor->addComponent(PhysicsCmp_t{ eid, 0, 0, static_cast<uint32_t>(w), static_cast<uint32_t>(h) }); // Add the map physics component
+	m_cmpStor->addComponent(PhysicsCmp_t{ eid, 0, 0, static_cast<std::uint32_t>(w), static_cast<std::uint32_t>(h) }); // Add the map physics component
 
 	// Create player.
 	m_playerEid = tinyECS::EntityManager_t::createPlayer();
@@ -51,7 +51,7 @@ Map_t::Map_t(RenderSys_t& renderSys, uint8_t columnsEnemies, uint8_t rowsEnemies
 	auto y{ kYAesteroidInit };
 	for (auto i = 0; i < m_numCovers; ++i)
 	{
-		tinyECS::EntityManager_t::createObstacle(x, y);
+		tinyECS::EntityManager_t::createObstacle(std::uint32_t(x), std::uint32_t(y));
 		x += kAesteroidPadding;
 	}
 	
@@ -102,7 +102,7 @@ bool Map_t::run()
  }
 
 // Get playerHP
-uint32_t Map_t::getPlayerHP() const
+std::uint32_t Map_t::getPlayerHP() const
 {
 	auto hp = m_cmpStor->getComponentFromID<HPCmp_t>(m_playerEid);
 	if (!hp) return 0;
@@ -118,7 +118,7 @@ void Map_t::checkAliveEntites()
 
 	auto hpSize = hpCmps.size();
 
-	for(auto i = 0; i < hpSize; ++i)
+	for(auto i = 0UL; i < hpSize; ++i)
 	{
 		auto& h = hpCmps[i];
 		
@@ -189,25 +189,25 @@ void Map_t::checkCollisions() const
 	const auto size = collComps.size();
 
 	// We could do better. -> Collision system.
-	auto checkInterval = [](uint32_t l1, uint32_t r1, uint32_t l2, uint32_t r2)
+	auto checkInterval = [](std::uint32_t l1, std::uint32_t r1, std::uint32_t l2, std::uint32_t r2)
 	{
 		if (l2 > r1) return false;
 		if (l1 > r2) return false;
 		return true;
 	};
 
-	auto getBbox = [](const SDL_Rect& rect) -> auto
+	auto getBbox = [](const SDL_FRect& rect) -> auto
 	{
-		const auto xLeft = rect.x;
-		const auto xRight = xLeft + rect.w;
+		const auto xLeft = std::uint32_t(rect.x);
+		const auto xRight = xLeft + std::uint32_t(rect.w);
 
-		const auto yUp = rect.y;
-		const auto yDown = yUp + rect.h;
+		const auto yUp = std::uint32_t(rect.y);
+		const auto yDown = yUp + std::uint32_t(rect.h);
 
 		return std::tuple{ xLeft, xRight, yUp, yDown };
 	};
 	
-	for(auto i = 0; i < size-1; ++i)
+	for(auto i = 0UL; i < size-1; ++i)
 	{
 		auto& col1{ collComps[i] };
 		for(auto j = i + 1; j < size; ++j)

@@ -38,7 +38,7 @@ namespace tinyECS
 	}
 
 	// Create wall
-	void EntityManager_t::createWall(uint32_t x, uint32_t y, uint32_t w, uint32_t h)
+	void EntityManager_t::createWall(std::uint32_t x, std::uint32_t y, std::uint32_t w, std::uint32_t h)
 	{
 		const Entity_t wall;
 		const auto wallEID{ wall.getEntityID() };
@@ -52,14 +52,14 @@ namespace tinyECS
 	}
 
 	// Create an enemy.
-	std::size_t EntityManager_t::createEnemy(uint32_t x, uint32_t y)
+	std::size_t EntityManager_t::createEnemy(std::uint32_t x, std::uint32_t y)
 	{
 		const Entity_t e;
 		const auto eEid{ e.getEntityID() };
 		auto* cmpStor{ tinyECS::GameContext_t::getCmpStorage() };
 		
 		cmpStor->addComponent(RenderCmp_t{ eEid, RenderCmp_t::types::R_Enemy});
-		const auto& phyEne = cmpStor->addComponent(PhysicsCmp_t{ eEid, static_cast<uint32_t>(x), static_cast<uint32_t>(y), kSpaceShipSize, kSpaceShipSize });
+		const auto& phyEne = cmpStor->addComponent(PhysicsCmp_t{ eEid, static_cast<std::uint32_t>(x), static_cast<std::uint32_t>(y), kSpaceShipSize, kSpaceShipSize });
 		auto& collCmp = cmpStor->addComponent(CollisionCmp_t{ eEid, phyEne.getRect() });
 		collCmp.m_properties = CollisionCmp_t::P_isMovable ^ CollisionCmp_t::P_isEnemy ^ CollisionCmp_t::P_damages;
 		collCmp.m_mask = CollisionCmp_t::L_three | CollisionCmp_t::L_four;
@@ -70,18 +70,18 @@ namespace tinyECS
 	}
 
 	// Create player bullet.
-	void EntityManager_t::createPlayerBullet(uint32_t x, uint32_t y)
+	void EntityManager_t::createPlayerBullet(std::uint32_t x, std::uint32_t y)
 	{
 		createBullet(x, y, RenderCmp_t::types::R_PlayerBullet, -kBulletSpeed, CollisionCmp_t::L_one | CollisionCmp_t::L_four);
 	}
 
 	// Create enemy bullet.
-	void EntityManager_t::createEnemyBullet(uint32_t x, uint32_t y)
+	void EntityManager_t::createEnemyBullet(std::uint32_t x, std::uint32_t y)
 	{
 		createBullet(x, y, RenderCmp_t::types::R_EnemyBullet, kBulletSpeed, CollisionCmp_t::L_two);
 	}
 
-	void EntityManager_t::createObstacle(uint32_t x, uint32_t y)
+	void EntityManager_t::createObstacle(std::uint32_t x, std::uint32_t y)
 	{
 		const Entity_t e;
 		const auto eid{ e.getEntityID() };
@@ -95,7 +95,7 @@ namespace tinyECS
 	}
 
 	// CreateBullet.
-	void EntityManager_t::createBullet(uint32_t x, uint32_t y, RenderCmp_t::types type, int8_t speed, uint8_t mask)
+	void EntityManager_t::createBullet(std::uint32_t x, std::uint32_t y, RenderCmp_t::types type, int8_t speed, std::uint8_t mask)
 	{
 		x -= kBulletSize / 2; // To spawn on the middle.
 		const Entity_t e;

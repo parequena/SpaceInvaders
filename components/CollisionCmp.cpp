@@ -13,23 +13,11 @@
 
 struct PhysicsCmp_t;
 
-CollisionCmp_t::CollisionCmp_t(std::size_t eid, const SDL_Rect& rect)
+CollisionCmp_t::CollisionCmp_t(std::size_t eid, const SDL_FRect& rect)
 	: Component_t(eid)
 	, m_prevPos()
 	, m_boundingBox(rect)
 {
-}
-
-CollisionCmp_t& CollisionCmp_t::operator=(const CollisionCmp_t& rh)
-{
-	if (this == &rh) return *this;
-	Component_t::operator = (rh);
-	m_prevPos = rh.m_prevPos;
-	m_boundingBox = rh.m_boundingBox;
-	m_properties = rh.m_properties;
-	m_mask = rh.m_mask;
-
-	return *this;
 }
 
 void CollisionCmp_t::update()

@@ -5,8 +5,6 @@
     Date   : May 2020
 */
 
-#pragma once
-
 #include "MenuState.h"
 #include <SDL.h>
 #include <iostream>
@@ -53,7 +51,7 @@ namespace tinyECS
 			vect.emplace_back(SDL_CreateTextureFromSurface(m_renderSys.getRenderer(), sur));
 		};
 		
-		for (auto i = 0; i < size; ++i)
+		for (auto i = 0UL; i < size; ++i)
 		{
 			emplaceOnVector(m_texturesON, kMenuAssetsON[i]);
 			emplaceOnVector(m_texturesOFF, kMenuAssetsOFF[i]);
@@ -67,11 +65,11 @@ namespace tinyECS
 		SDL_PollEvent(&event);
 		const auto keySym{ event.key.keysym.sym };
 
-		if (event.type == SDL_QUIT) return false;
+		if (event.type == SDL_EVENT_QUIT) return false;
 		
 		// std::cout << "MenuKey : " << static_cast<int>(m_idx) << "\n";
 		
-		if (event.type == SDL_KEYUP) // Push any button.
+		if (event.type == SDL_EVENT_KEY_UP) // Push any button.
 		{
 			if (m_idx > m_minIdx && keySym == SDLK_UP)
 			{
@@ -107,28 +105,28 @@ namespace tinyECS
 		const auto help{"UP/DOWN arrows to select. ENTER (RETURN) to pick"};
 		auto* renderer{ m_renderSys.getRenderer() };
 		
-		SDL_Rect rect{ 0, 0, kWindWidht, kWindHeight };
-		const SDL_Rect titleRect{ kTitleXInit, kTitleYInit, kTitleWidth, kTitleHeight };
-		const SDL_Rect helpRect{ 15, 350, 430, 40 };
+		const SDL_FRect rect{ 0, 0, kWindWidht, kWindHeight };
+		const SDL_FRect titleRect{ kTitleXInit, kTitleYInit, kTitleWidth, kTitleHeight };
+		const SDL_FRect helpRect{ 15.f, 350.f, 430.f, 40.f };
 
 		SDL_RenderClear(renderer); // Clear the screen.
-		SDL_RenderCopy(renderer, m_renderSys.m_textures[static_cast<int>(RenderCmp_t::types::R_Background)], nullptr, &rect);
+		SDL_RenderTexture(renderer, m_renderSys.m_textures[static_cast<int>(RenderCmp_t::types::R_Background)], nullptr, &rect);
 
-		auto y{ kMenuYInit };
-		for(auto i = 0; i < kMenuAssetsON.size(); ++i)
+		float y{ kMenuYInit };
+		for(auto i = 0UL; i < kMenuAssetsON.size(); ++i)
 		{
-			SDL_Rect rectMenu{ kMenuXInit, y, kMenuWidth, kMenuHeight };
+			SDL_FRect const rectMenu{ kMenuXInit, float(y), kMenuWidth, kMenuHeight };
 			auto* texture = i == m_idx ? m_texturesON[i] : m_texturesOFF[i];
-			SDL_RenderCopy(renderer, texture, nullptr, &rectMenu);
+			SDL_RenderTexture(renderer, texture, nullptr, &rectMenu);
 			y += 80;
 		}
 
-		auto textToTexture = [&](const std::string_view& str, const SDL_Rect& rect)
+		auto textToTexture = [&](const std::string_view& str, const SDL_FRect& local_rect)
 		{
-			SDL_Surface* srf = TTF_RenderText_Solid(m_renderSys.m_font, str.data(), { 255, 255, 255 });
+			SDL_Surface* srf = TTF_RenderText_Solid(m_renderSys.m_font, str.data(), { 255, 255, 255, 255 });
 			SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, srf);
-			SDL_RenderCopy(renderer, texture, nullptr, &rect);
-			SDL_FreeSurface(srf);
+			SDL_RenderTexture(renderer, texture, nullptr, &local_rect);
+			SDL_DestroySurface(srf);
 			SDL_DestroyTexture(texture);		
 		};
 

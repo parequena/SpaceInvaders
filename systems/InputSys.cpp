@@ -16,8 +16,8 @@ bool InputSys_t::update()
 	SDL_Event event;
 	SDL_PollEvent(&event);
 	// If we pressed quit.
-	if (event.type == SDL_QUIT) return false;
-	if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) return false;
+	if (event.type == SDL_EVENT_QUIT) return false;
+	if (event.type == SDL_EVENT_KEY_DOWN && event.key.keysym.sym == SDLK_ESCAPE) return false;
 
 	auto& inCmps = tinyECS::GameContext_t::getCmpStorage()->getComponents<InputCmp_t>();
 
@@ -28,13 +28,13 @@ bool InputSys_t::update()
 
 		const auto keySym{ event.key.keysym.sym };
 		
-		if(event.type == SDL_KEYDOWN) // Push any button.
+		if(event.type == SDL_EVENT_KEY_DOWN) // Push any button.
 		{
 			if (keySym == in.m_leftKey)  phyCmp->get().m_vx = -phyCmp->get().m_speed; // Move left.
 			if (keySym == in.m_rightKey) phyCmp->get().m_vx = phyCmp->get().m_speed; // Move left.
 		}
 
-		if(event.type == SDL_KEYUP) // Released any button.
+		if(event.type == SDL_EVENT_KEY_UP) // Released any button.
 		{
 			if (keySym == in.m_shootKey)
 			{

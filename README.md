@@ -4,11 +4,12 @@ Space Invaders made with SDL2 on Windows using C++17 and ECS approach.
 
 [Twitter](https://twitter.com/conPdePABLO)
 
-[LinkedIn](https://www.linkedin.com/in/pablo-requena-gonz%C3%A1lez-387366146/)
+[LinkedIn](https://www.linkedin.com/in/parequena/)
 
 [GitHub](https://github.com/parequena)
 
 ## Features
+- This repo has been updated on 26/09/2023, integrating some Sanitizers and all warnings enabled as errors, surely this code has not been revised, **I SAW SOME LEAK SANITIZER ERRORS** can I won't solve them right now.
 - Using SDL2 just as graphic api.
 - C++17 features:
     - Smart pointers.   
@@ -28,10 +29,38 @@ Space Invaders made with SDL2 on Windows using C++17 and ECS approach.
 - **main.cpp** main file.
  
 ## Installation and compilation
-Visual Studio does all things for us.
- 1. Clone this repository `git clone https://github.com/parequena/SpaceInvaders.git`
- 2. Open `SpaceInvaders.sln` << Made on Visual Studio 2019
- 3. Play the game.
+### Dependencies
+* CMake 3.27 or later
+* A build tool like Ninja, GNU Make or Visual Studio
+* A C++23-compliant compiler, such as:
+  * GCC 13 or later
+  * Clang 16 or later
+  * Visual Studio 2022 or later
+
+#### Using CMake (preferred):
+##### CMake presets:
+* gcc:
+    * gcc_debug
+    * gcc_release
+* clang:
+    * clang_debug
+    * clang_release
+* Windows MVSC (Visual Studio 2022):
+    * wind_debug
+    * wind_release
+* Windows Clang (Visual Studio 2022):
+    * wind_clang_debug
+    * wind_clang_release
+
+Let's see an example with `gcc_release` as preset, but you can choose another from this list.
+```
+$ git clone --recurse-submodules https://github.com/parequena/SpaceInvaders
+$ mkdir build
+$ cd build
+$ cmake .. --preset gcc_release
+$ cd gcc_release
+$ cmake --build . -j
+```
 
 ## Some Images
 ~~*TODO*~~

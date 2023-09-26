@@ -15,28 +15,24 @@
 
 struct RenderCmp_t final : tinyECS::Component_t
 {
-	enum struct types : uint8_t
-	{
-		R_Wall,
-		R_Background,
-		R_Player,
-		R_Enemy,
-		R_PlayerBullet,
-		R_EnemyBullet,
-		R_Rock,
-		R_TOTALRENDERS
-	};
-	
-	// Ctor.
-	RenderCmp_t(std::size_t eid, types renType);
+   enum class types : std::uint8_t
+   {
+      R_Wall,
+      R_Background,
+      R_Player,
+      R_Enemy,
+      R_PlayerBullet,
+      R_EnemyBullet,
+      R_Rock,
+      R_TOTALRENDERS
+   };
 
-	// Operator=
-	RenderCmp_t& operator=(const RenderCmp_t& rh);
+   // Ctor.
+   RenderCmp_t(std::size_t eid, types renType);
 
-	// Update;
-	void update() override;
+   // Update;
+   void update() override;
 
-	// Which render.
-	types m_type{ types::R_TOTALRENDERS };
+   // Which render.
+   types m_type{ types::R_TOTALRENDERS };
 };
-

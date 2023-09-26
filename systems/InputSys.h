@@ -9,9 +9,9 @@
 
 struct InputSys_t
 {
-	// Ctor.
-	explicit InputSys_t() = default;
+   // Ctor.
+   explicit InputSys_t() = default;
 
-	// update
-	[[nodiscard]] static bool update();
+   // update
+   [[nodiscard]] static bool update();
 };

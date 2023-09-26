@@ -12,51 +12,53 @@
 
 struct RenderSys_t
 {
-	// Ctor.
-	explicit RenderSys_t();
+   // Ctor.
+   explicit RenderSys_t();
+   inline constexpr RenderSys_t(RenderSys_t const&) = delete;
+   inline constexpr RenderSys_t operator=(RenderSys_t const&) = delete;
 
-	// Dtor.
-	~RenderSys_t();
-	
-	// Update.
-	bool update();
+   // Dtor.
+   ~RenderSys_t();
 
-	// Score to print.
-	uint32_t m_currScore{ 0 };
-	
-	// Best score to print.
-	uint32_t m_bestScore{ 0 };
-	
-	// Player hp.
-	uint32_t m_playerHP{ 0 };
+   // Update.
+   bool update();
 
-	// Getters.
-	[[nodiscard]] constexpr SDL_Window* getWindow() const noexcept { return m_window; }
-	[[nodiscard]] constexpr SDL_Renderer* getRenderer() const noexcept { return m_renderer; }
+   // Score to print.
+   std::uint32_t m_currScore{ 0 };
 
-	// Font
-	TTF_Font* m_font{ TTF_OpenFont("Assets/MenuScreen/PkmnXandY.ttf", 24) };
+   // Best score to print.
+   std::uint32_t m_bestScore{ 0 };
 
-	// Best score rect
-	SDL_Rect m_bestRect{ 10, kWindHeight - 45, 100, 40 };
+   // Player hp.
+   std::uint32_t m_playerHP{ 0 };
 
-	// Textures
-	vect_t<SDL_Texture*> m_textures;
-	
+   // Getters.
+   [[nodiscard]] constexpr SDL_Window* getWindow() const noexcept { return m_window; }
+   [[nodiscard]] constexpr SDL_Renderer* getRenderer() const noexcept { return m_renderer; }
+
+   // Font
+   TTF_Font* m_font{ TTF_OpenFont("Assets/MenuScreen/PkmnXandY.ttf", 24) };
+
+   // Best score rect
+   SDL_FRect m_bestRect{ 10.f, kWindHeight - 45.f, 100.f, 40.f };
+
+   // Textures
+   vect_t<SDL_Texture*> m_textures{};
+
 private:
-	// Surfaces
-	vect_t<SDL_Surface*> m_surfaces;
+   // Surfaces
+   vect_t<SDL_Surface*> m_surfaces{};
 
-	// Actual texture
-	SDL_Texture* m_actScore{ nullptr };
-	
-	// Window.
-	SDL_Window* m_window{ nullptr };
+   // Actual texture
+   SDL_Texture* m_actScore{ nullptr };
 
-	// Renderer
-	SDL_Renderer* m_renderer{ nullptr };
+   // Window.
+   SDL_Window* m_window{ nullptr };
 
-	// Rects
-	SDL_Rect m_actualRect{ kWindWidht/2-50, kWindHeight - 45, 100, 40 };
-	SDL_Rect m_playerHpRect{ kWindWidht-80, kWindHeight - 45, 60, 40 };
+   // Renderer
+   SDL_Renderer* m_renderer{ nullptr };
+
+   // Rects
+   SDL_FRect m_actualRect{ kWindWidht / 2 - 50, kWindHeight - 45, 100, 40 };
+   SDL_FRect m_playerHpRect{ kWindWidht - 80, kWindHeight - 45, 60, 40 };
 };

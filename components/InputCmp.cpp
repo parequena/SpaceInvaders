@@ -12,14 +12,6 @@ InputCmp_t::InputCmp_t(std::size_t eid)
     : Component_t(eid)
 { }
 
-InputCmp_t& InputCmp_t::operator=(const InputCmp_t& rh)
-{
-	if (this == &rh) return *this;
-	Component_t::operator = (rh);
-	
-	return *this;
-}
-
 void InputCmp_t::update()
 {
 }
