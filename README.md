@@ -63,6 +63,22 @@ $ cd gcc_release
 $ cmake --build . -j
 ```
 
+##### Windows
+As we don't have freetype on Windows, we need it for compiling
+```
+$ git clone --recurse-submodules https://github.com/parequena/SpaceInvaders
+#               git submodule update --init # if fails
+$ cd libs/SDL_ttf/
+$ git submodule update --init external/freetype/
+$ cd ../..
+$ mkdir build
+$ cd build
+$ cmake .. --preset wind_release
+$ cd wind_release
+$ cmake --build . -j
+```
+
+
 ## Some Images
 ~~*TODO*~~
 
