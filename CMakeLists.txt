@@ -11,7 +11,7 @@ target_compile_options(SpaceInvaders PRIVATE ${PROJECT_WARNINGS})
 set_property(TARGET SpaceInvaders PROPERTY COMPILE_WARNING_AS_ERROR ON)
 target_compile_features(SpaceInvaders PRIVATE cxx_std_23)
 target_include_directories(SpaceInvaders PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_link_libraries(SpaceInvaders PRIVATE ${LINKER_FLAGS} ${SANITIZER_FLAGS} SDL3::SDL3 SDL3_image::SDL3_image-static Freetype::Freetype SDL3_ttf::SDL3_ttf-static)
+target_link_libraries(SpaceInvaders PRIVATE ${LINKER_FLAGS} ${SANITIZER_FLAGS} SDL3::SDL3 SDL3_image::SDL3_image-static SDL3_ttf::SDL3_ttf-static)
 target_sources(SpaceInvaders
 PUBLIC
 ${CMAKE_CURRENT_SOURCE_DIR}/src/components/AICmp.h

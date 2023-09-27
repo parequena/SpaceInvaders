@@ -1,12 +1,11 @@
 # Space Invaders
 
-Space Invaders made with SDL3 on Windows using C++17 and ECS approach.
+Space Invaders made with SDL2 (Updated to SDL3) on Windows using VisualStudio2019-C++17 (Updated into CMake-C++23) and ECS approach.
 
-[Twitter](https://twitter.com/conPdePABLO)
+## Some Images
+![Image displaying Main Menu](/githubResource/Screenshot_1.png "Menu")
+![Image displaying Main Game](/githubResource/Screenshot_2.png "Game")
 
-[LinkedIn](https://www.linkedin.com/in/parequena/)
-
-[GitHub](https://github.com/parequena)
 
 ## Features
 - This repo has been updated on 26/09/2023, integrating some Sanitizers and all warnings enabled as errors, surely this code has not been revised, **I SAW SOME LEAK SANITIZER ERRORS** can I won't solve them right now.
@@ -77,10 +76,6 @@ $ cmake .. --preset wind_release
 $ cd wind_release
 $ cmake --build . -j
 ```
-
-
-## Some Images
-~~*TODO*~~
 
 ## TODO
 - Create AI system.
