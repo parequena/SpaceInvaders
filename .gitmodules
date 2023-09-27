@@ -7,3 +7,6 @@
 [submodule "libs/SDL_image"]
 	path = libs/SDL_image
 	url = https://github.com/libsdl-org/SDL_image
+[submodule "libs/freetype"]
+	path = libs/freetype
+	url = https://github.com/freetype/freetype
