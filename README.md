@@ -90,3 +90,11 @@ $ cmake --build . -j
 - **tinyECS inspiration:** [Profesor Retroman C++ : Programación de Videojuegos [2019/20] - Youtube List](https://www.youtube.com/playlist?list=PLmxqg54iaXrhTqZxylLPo0nov0OoyJqiS) << Very changed.
 - **Graphical Assets:** https://opengameart.org/content/complete-spaceship-game-art-pack
 - **Font:** https://www.dafont.com/es/pokemon-x-and-y.font
+
+# Get in Touch
+If you want to get in touch with me, here are my social networks
+- [Twitter](https://x.com/conPdePABLO)
+- [BlueSky](https://bsky.app/profile/theapoca.bsky.social)
+- [Youtube](https://www.youtube.com/@conpdepab)
+- [Instagram](https://www.instagram.com/conpdepab/)
+- [LinkedIn](https://www.linkedin.com/in/parequena/)
